@@ -1,0 +1,96 @@
+{
+  "name": "capl-extension",
+  "displayName": "Etd basetech capl support",
+  "description": "Syntax highlighting and function outline support for Vector CANoe CAPL language",
+  "version": "0.0.2",
+  "publisher": "junyuzhang",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/capl-extension.git"
+  },
+  "keywords": [
+    "capl",
+    "can",
+    "vector",
+    "canoe",
+    "automotive"
+  ],
+  "activationEvents": [
+    "onLanguage:capl"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "capl",
+      "aliases": ["CAPL", "capl"],
+      "extensions": [".can", ".cin"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "capl",
+      "scopeName": "source.capl",
+      "path": "./syntaxes/capl.tmGrammar.json"
+    }],
+    "views": {
+      "explorer": [
+        {
+          "id": "caplOutline",
+          "name": "CAPL Outline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "CAPL Extension",
+      "properties": {
+        "caplOutline.sortOrder": {
+          "type": "string",
+          "enum": ["position", "alphabetical"],
+          "default": "position",
+          "description": "Sort order for functions in the CAPL Outline"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "caplOutline.sortByPosition",
+        "title": "CAPL: Sort Functions by Position"
+      },
+      {
+        "command": "caplOutline.sortByAlphabetical",
+        "title": "CAPL: Sort Functions Alphabetically"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "caplOutline.sortByPosition",
+          "when": "view == caplOutline",
+          "group": "navigation",
+          "title": "Sort by Position"
+        },
+        {
+          "command": "caplOutline.sortByAlphabetical",
+          "when": "view == caplOutline",
+          "group": "navigation",
+          "title": "Sort Alphabetically"
+        }
+      ]
+    }
+  },
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "format": "prettier --write '**/*.{ts,tsx,js,jsx,json}'",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "typescript": "^4.3.5"
+  }
+} 

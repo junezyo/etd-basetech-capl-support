@@ -1,0 +1,45 @@
+{
+  "scopeName": "source.capl",
+  "fileTypes": [".can", ".cin"],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#functions"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.capl",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.capl",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "meta.function.capl",
+          "begin": "\\b(on|function)\\b\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.capl" },
+            "2": { "name": "entity.name.function.capl" }
+          },
+          "end": "\\{",
+          "patterns": [
+            {
+              "include": "#comments"
+            }
+          ]
+        }
+      ]
+    }
+  }
+} 
