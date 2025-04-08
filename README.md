@@ -44,6 +44,21 @@ The following settings are available in VS Code:
 
 ## Changelog
 
+### v0.0.3
+- Improved outline view organization
+  - Grouped functions and test cases into separate sections
+  - Added dedicated group headers with distinct icons
+- Enhanced test case support
+  - Added support for `testcase name (){}` syntax
+  - Added support for `export testcase name (){}` syntax
+  - Display full test case signatures in outline
+- Fixed function detection issues
+  - Improved function detection regex
+  - Prevented false detection of control statements (if, while, for)
+- Enhanced outline item display format
+  - Functions: `function_name(parameter_types) : return_type`
+  - Test cases: `testcase_name() : void`
+
 ### v0.0.2
 - Added function signature display in outline view
 - Enhanced function parameter type recognition
